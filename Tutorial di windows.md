@@ -19,4 +19,7 @@
 npm install -g terminalizer
 ```
 - Jika sudah selesai tampilannya akan seperti ini
+```
+terminalizer --version
+```
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/71f4364d-8a99-4218-8904-d324f269dd76" />
