@@ -1,8 +1,0 @@
-**Instalasi MariaDB di Linux Mint**: 
-
-1. Buka terminal. 
-2. Buka Fire Fox 
-3. Perbarui indeks paket. Ini akan memastikan Anda mendapatkan versi perangkat lunak terbaru. 'sudo apt update'
-4. Instal MariaDB Server. Gunakan perintah berikut untuk mengunduh dan memasang server MariaDB. 'sudo apt install   mariadb-server'
-5. Lakukan skrip keamanan, karena ini adalah langkah penting untuk mengamankan instalasi Anda. 'sudo mysql_secure_installation'
-6. cek keaktifan MariaDB dengan kode 'sudo systemctl status mariadb'
