@@ -88,6 +88,6 @@ Oleh karena itu, AI sebaiknya digunakan sebagai **alat bantu**, bukan sebagai pe
 
 ### Kesimpulan
 
-Pemanfaatan Artificial Intelligence dalam normalisasi database hingga N1, N2, dan N3 merupakan inovasi yang dapat meningkatkan efisiensi dan kualitas perancangan database. AI mampu membantu dalam mengidentifikasi pelanggaran normalisasi, menganalisis ketergantungan data, serta memberikan rekomendasi struktur tabel yang lebih optimal. Namun demikian, peran manusia tetap diperlukan untuk memastikan bahwa desain database sesuai dengan kebutuhan dan konteks sistem informasi yang dibangun.
+Pemanfaatan Artificial Intelligence dalam normalisasi database hingga N1, N2, dan N3 merupakan inovasi yang dapat meningkatkan efisiensi dan kualitas perancangan database. AI mampu membantu dalam mengidentifikasi pelanggaran normalisasi, menganalisis ketergantungan data, serta memberikan rekomendasi struktur tabel yang lebih optimal. Namun demikian, peran manusia tetap diperlukan untuk memastikan bahwa desain database sesuai dengan kebutuhan dan konteks sistem informasi yang dibangun
 
 ---
