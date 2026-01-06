@@ -76,6 +76,6 @@ rincian dari syntax tersebut adalah sebagai berikut:
 
 <img width="1913" height="1080" alt="img1" src="https://github.com/user-attachments/assets/bf28353a-c3f0-406c-85de-c0b97b4a6059" />
 
-<img src="/img/img2.png" alt="img2" width="340px" height="214px">
+<img width="1913" height="1080" alt="img2" src="https://github.com/user-attachments/assets/65c17f2d-d767-49c4-8212-be83b537296d" />
 
 Ini adalah bukti bahwa waydroid bisa menggunakan internet dan membuka browser
