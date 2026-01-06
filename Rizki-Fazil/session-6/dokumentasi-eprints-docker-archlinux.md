@@ -46,7 +46,7 @@ systemctl start docker
 
 Dan clone repository tersebut dengan mengklik tombol hijau yang bertuliskan "code" lalu copy yang (HTTPS) 
 
-<img src="/img/Screenshot_20251203_180750.png" alt="github" width="500" height="600"> 
+<img width="467" height="603" alt="Screenshot_20251203_195736" src="https://github.com/user-attachments/assets/18d7bae8-9256-419c-83d1-95bf638792e2" /> 
  
 3. setelah itu masuk kedalam terminal lalu ketik
 
