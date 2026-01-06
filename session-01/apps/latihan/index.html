@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perpustakaan Digital</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo"> Perpustakaan Digital</div>
+    <nav class="navbar">
+      <ul>
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#resources">Koleksi</a></li>
+        <li><a href="#contact">Kontak</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle">☰</button>
+  </header>
+
+  <!-- Layout utama -->
+  <main class="layout">
+    <!-- Konten utama -->
+    <article id="home">
+      <h2>Selamat Datang</h2>
+      <p>
+        Perpustakaan Digital adalah perpustakaan dengan koleksi dominan berbentuk digital, bukan fisik seperti dahulu.
+      </p>
+      <p>
+        Kami menghadirkan e-book, jurnal elektronik, dan arsip digital untuk mendukung pembelajaran modern.
+      </p>
+      <button class="btn" id="exploreBtn">Jelajahi</button>
+    </article>
+
+    <!-- Sidebar -->
+    <aside>
+      <h3>Menu Cepat</h3>
+      <ul>
+        <li><a href="#home"> Beranda</a></li>
+        <li><a href="#about"> Tentang</a></li>
+        <li><a href="#resources"> Koleksi</a></li>
+        <li><a href="#contact"> Kontak</a></li>
+      </ul>
+    </aside>
+  </main>
+
+  <!-- Section tambahan -->
+  <section class="content-section" id="about">
+    <h2>Tentang Kami</h2>
+    <p>
+      Kami berkomitmen menghadirkan akses koleksi digital yang luas, mulai dari e-book, jurnal elektronik, hingga arsip digital.
+    </p>
+  </section>
+
+  <section class="content-section" id="resources">
+    <h2>Koleksi</h2>
+    <ul class="resource-list">
+      <li>E-Book </li>
+      <li>Jurnal Elektronik </li>
+      <li>Arsip Digital </li>
+      <li>Multimedia </li>
+    </ul>
+  </section>
+
+  <section class="content-section" id="contact">
+    <h2>Kontak</h2>
+    <p>Email: <a href="mailto:info@perpustakaandigital.com">info@perpustakaandigital.com</a></p>
+    <p>Telepon: +62 812-3456-7890</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Muhammad Yusuf Ghozin | Semua Hak Dilindungi</p>
+  </footer>
+
+  <!-- Script interaktif -->
+  <script>
+    // Toggle menu untuk layar kecil
+    const toggleBtn = document.querySelector(".menu-toggle");
+    const navbar = document.querySelector(".navbar");
+    toggleBtn.addEventListener("click", () => {
+      navbar.classList.toggle("active");
+    });
+
+    // Scroll ke section koleksi saat tombol ditekan
+    document.getElementById("exploreBtn").addEventListener("click", () => {
+      document.getElementById("resources").scrollIntoView({ behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>
