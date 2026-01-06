@@ -7,7 +7,7 @@ Berikut adalah cara integrasi akun GitHub dengan Visual Code.
 3. Ketik `cd .ssh` lalu enter
 4. Ketik `ssh-keygen -t ed25519 -c "youremail.com"` lalu enter
 5. Ketik `ssh-keygen -t rsa -b 4096 -c "youremail.com"` lalu enter
-![tahap 1](/session%201/img/intgrasissh.jpeg)
+   blob:https://web.whatsapp.com/f9799ad5-310a-44ae-9c74-085365d65b6a
 6. Ketik `cat ~/.ssh/id ed25519.pub` lalu enter
 7. Ketik `ls` lalu enter
 8. Ketik `cat example.pub` lalu enter
