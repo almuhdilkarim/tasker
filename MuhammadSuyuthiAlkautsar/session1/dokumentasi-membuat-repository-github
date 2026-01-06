@@ -1,0 +1,76 @@
+# Dokumentasi Pembuatan Repository di GitHub
+
+---
+
+## 1. Langkah-Langkah Membuat Repository
+
+### Step 1: Login ke GitHub
+1.  Buka [https://github.com](https://github.com)
+2.  Login dengan akun GitHub Anda (email/password atau via Google Account)
+
+### Step 2: Akses Halaman Pembuatan Repository
+1.  Setelah login,  **klik ikon "+"** di pojok kanan atas
+2.   **Pilih "New repository"** dari dropdown menu
+
+![Step 2](https://via.placeholder.com/600x400?text=Klik+Plus+New+Repository)
+
+**Alternatif**: Anda juga bisa langsung mengunjungi [https://github.com/new](https://github.com/new)
+
+### Step 3: Isi Formulir Pembuatan Repository
+
+![Form Repository](https://via.placeholder.com/600x400?text=Form+Create+New+Repository)
+
+#### A. **Repository name** *(Wajib)*
+- **Beri nama yang deskriptif** untuk repository Anda
+- **Contoh baik**: `todo-list-app`, `university-project`, `learning-python`
+- **Contoh buruk**: `project1`, `test`, `new-repo`
+- **Aturan penamaan**:
+  - Hanya boleh mengandung huruf, angka, hyphen (-), dan underscore (_)
+  - Tidak boleh mengandung spasi
+  - Case sensitive
+
+#### B. **Description** *(Opsional)*
+- 🫷 **Tambahkan deskripsi singkat** tentang tujuan repository
+- **Contoh**: "A simple todo list application built with React and Node.js"
+
+#### C. **Visibility** *(Penting!)*
+- 🫷 **Pilih jenis repository**:
+  - ✅ **Public**: Semua orang bisa melihat (direkomendasikan untuk project belajar)
+  - 🔒 **Private**: Hanya Anda dan collaborator yang bisa melihat
+
+#### D. **Initialize this repository with:**
+- 🫷 **Centang opsi berikut jika diperlukan**:
+
+| Opsi | Keterangan | Direkomendasikan untuk |
+|------|------------|------------------------|
+| **Add a README file** | File penjelasan tentang project | ✅ **YA** (sangat disarankan) |
+| **Add .gitignore** | File untuk mengabaikan file tertentu | ✅ **YA** (pilih template sesuai bahasa) |
+| **Choose a license** | Lisensi untuk project Anda | ⚠️ **OPSIONAL** (pilih jika project open source) |
+
+---
+
+## 3. Konfigurasi Repository
+
+### Pilihan .gitignore Template:
+Jika memilih Add .gitignore, pilih template sesuai bahasa pemrograman:
+- **Python**: mengabaikan `__pycache__`, `.pyc`, dll.
+- **Node**: mengabaikan `node_modules/`, `npm-debug.log`
+- **Java**: mengabaikan `*.class`, `target/`
+- **Atau pilih "Custom"** untuk membuat manual
+
+### Pilihan License:
+Jika memilih Add license, pilih yang sesuai:
+- **MIT License**: Lisensi permisif yang populer
+- **Apache License 2.0**: Untuk project enterprise
+- **GNU GPLv3**: Lisensi copyleft
+
+### Step 4: Create Repository
+1.  Setelah semua konfigurasi selesai
+2.  🫷 **Klik tombol hijau "Create repository"**
+
+
+
+---
+![image URL](https://github.com/muaskar029-pixel/projek_kelas/blob/main/Screenshot%202025-09-22%20191334.png?raw=true)
+
+
