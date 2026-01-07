@@ -1,0 +1,114 @@
+/* Reset dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Georgia", "Times New Roman", serif;
+}
+
+body {
+  background: linear-gradient(to bottom, #f4f1ea, #e9e4d4);
+  color: #3b3b3b;
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+/* Header klasik elegan */
+header {
+  background: linear-gradient(90deg, #2c3e50, #3a506b);
+  color: #f8f1e5;
+  padding: 1.5rem 2rem;
+  border-bottom: 4px solid #d4af37; /* garis emas */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+header h1 {
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+  font-family: "Times New Roman", serif;
+}
+
+/* Navigasi klasik */
+nav {
+  margin-top: 0.8rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #f8f1e5;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  padding-bottom: 3px;
+}
+
+nav a:hover {
+  color: #d4af37;
+  border-bottom: 2px solid #d4af37;
+}
+
+/* Container utama */
+.container {
+  max-width: 950px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fffdf7;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.container h2 {
+  margin-bottom: 1rem;
+  font-size: 1.9rem;
+  color: #2c3e50;
+  border-left: 4px solid #d4af37;
+  padding-left: 0.6rem;
+  font-family: "Georgia", serif;
+}
+
+.container p {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  color: #444;
+}
+
+/* Tombol klasik modern */
+.btn {
+  display: inline-block;
+  margin-top: 1.2rem;
+  padding: 10px 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #2c3e50, #3a506b);
+  color: #f8f1e5;
+  border: 2px solid #d4af37;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: #d4af37;
+  color: #2c3e50;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Footer klasik */
+footer {
+  margin-top: 3rem;
+  text-align: center;
+  padding: 1rem;
+  background: #2c3e50;
+  color: #f8f1e5;
+  font-size: 0.9rem;
+  border-top: 4px solid #d4af37;
+  box-shadow: 0 -3px 6px rgba(0,0,0,0.15);
+}

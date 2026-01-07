@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Input Metadata Arsip</title>
+</head>
+<body>
+  <h1>Form Input Metadata Arsip</h1>
+  <p>Pendekatan: Dublin Core & Perka ANRI</p>
+
+  <form action="#" method="post">
+    <h2>A. Metadata Dublin Core</h2>
+
+    <label for="dcTitle">Title (Judul Arsip):</label>
+    <input type="text" id="dcTitle" name="dcTitle" placeholder="Contoh: Laporan Tahunan ANRI 2024">
+
+    <label for="dcCreator">Creator (Pencipta Arsip):</label>
+    <input type="text" id="dcCreator" name="dcCreator" placeholder="Unit pencipta arsip / instansi">
+
+    <label for="dcSubject">Subject (Topik/Subjek):</label>
+    <input type="text" id="dcSubject" name="dcSubject" placeholder="Subjek utama isi arsip">
+
+    <label for="dcDescription">Description (Deskripsi):</label>
+    <textarea id="dcDescription" name="dcDescription" rows="3" cols="50" placeholder="Deskripsi singkat isi arsip"></textarea>
+
+    <label for="dcPublisher">Publisher (Penerbit / Unit Pengelola):</label>
+    <input type="text" id="dcPublisher" name="dcPublisher" placeholder="Unit kearsipan / instansi penyimpan">
+
+    <label for="dcDate">Date (Tanggal Pembuatan / Terbit):</label>
+    <input type="date" id="dcDate" name="dcDate">
+
+    <label for="dcType">Type (Jenis Arsip):</label>
+    <select id="dcType" name="dcType">
+      <option value="teks">Teks</option>
+      <option value="gambar">Gambar</option>
+      <option value="audio">Audio</option>
+      <option value="video">Video</option>
+      <option value="elektronik">Dokumen Elektronik</option>
+    </select>
+
+    <label for="dcFormat">Format (Bentuk Fisik/Digital):</label>
+    <input type="text" id="dcFormat" name="dcFormat" placeholder="PDF, kertas A4, MP4, JPG">
+
+    <label for="dcIdentifier">Identifier (Nomor Arsip / Kode Klasifikasi):</label>
+    <input type="text" id="dcIdentifier" name="dcIdentifier" placeholder="Contoh: ANRI/2024/00123">
+
+    <label for="dcSource">Source (Sumber Asal Arsip):</label>
+    <input type="text" id="dcSource" name="dcSource" placeholder="Unit atau lembaga asal arsip">
+
+    <label for="dcLanguage">Language (Bahasa):</label>
+    <input type="text" id="dcLanguage" name="dcLanguage" placeholder="id, en, ar">
+
+    <label for="dcCoverage">Coverage (Cakupan Ruang/Waktu):</label>
+    <input type="text" id="dcCoverage" name="dcCoverage" placeholder="Indonesia, 2010–2024">
+
+    <label for="dcRights">Rights (Hak Cipta / Akses Arsip):</label>
+    <input type="text" id="dcRights" name="dcRights" placeholder="Terbuka / Terbatas / Rahasia">
+
+    <h2>B. Metadata Perka ANRI</h2>
+
+    <label for="kodeKlasifikasi">Kode Klasifikasi Arsip:</label>
+    <input type="text" id="kodeKlasifikasi" name="kodeKlasifikasi" placeholder="Contoh: 003.2">
+
+    <label for="uraian">Uraian Informasi Arsip:</label>
+    <textarea id="uraian" name="uraian" rows="3" cols="50" placeholder="Uraian isi arsip sesuai naskah"></textarea>
+
+    <label for="tingkatPerkembangan">Tingkat Perkembangan Arsip:</label>
+    <select id="tingkatPerkembangan" name="tingkatPerkembangan">
+      <option value="asli">Asli</option>
+      <option value="salinan">Salinan</option>
+      <option value="tembusan">Tembusan</option>
+      <option value="konsep">Konsep</option>
+    </select>
+
+    <label for="media">Media Arsip:</label>
+    <select id="media" name="media">
+      <option value="kertas">Kertas</option>
+      <option value="elektronik">Elektronik</option>
+      <option value="foto">Foto</option>
+      <option value="rekaman">Rekaman</option>
+    </select>
+
+    <label for="jumlah">Jumlah Arsip:</label>
+    <input type="number" id="jumlah" name="jumlah" placeholder="Jumlah berkas/folder">
+
+    <label for="lokasiSimpan">Lokasi Penyimpanan:</label>
+    <input type="text" id="lokasiSimpan" name="lokasiSimpan" placeholder="Ruang Arsip A, Lemari 02, Laci 3">
+
+    <label for="retensi">Jadwal Retensi Arsip (JRA):</label>
+    <input type="text" id="retensi" name="retensi" placeholder="5 tahun aktif + 10 tahun inaktif">
+
+    <label for="nasibAkhir">Nasib Akhir Arsip:</label>
+    <select id="nasibAkhir" name="nasibAkhir">
+      <option value="musnah">Dimusnahkan</option>
+      <option value="permanen">Permanen</option>
+      <option value="dinilai_kembali">Dinilai kembali</option>
+    </select>
+
+    <label for="statusArsip">Status Arsip:</label>
+    <select id="statusArsip" name="statusArsip">
+      <option value="aktif">Aktif</option>
+      <option value="inaktif">Inaktif</option>
+      <option value="statis">Statis</option>
+    </select>
+
+    <label for="pencipta">Unit Pencipta Arsip:</label>
+    <input type="text" id="pencipta" name="pencipta" placeholder="Contoh: Biro Umum ANRI">
+
+    <label for="tanggalMasuk">Tanggal Masuk Arsip:</label>
+    <input type="date" id="tanggalMasuk" name="tanggalMasuk">
+
+    <label for="keteranganTambahan">Keterangan Tambahan:</label>
+    <textarea id="keteranganTambahan" name="keteranganTambahan" rows="3" cols="50" placeholder="Keterangan lain jika ada"></textarea>
+
+    <button type="submit">Simpan Metadata Arsip</button>
+    <button type="reset">Reset</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Input Metadata Perpustakaan</title>
+</head>
+<body>
+  <h1>Form Input Data Bibliografi</h1>
+  <p><b>Pendekatan:</b> MARC 21 & Dublin Core</p>
+
+  <form action="#" method="post">
+ 
+    <h2>Data Utama (MARC 21 Fields)</h2>
+
+    <label for="controlNumber">001 - Control Number:</label>
+    <input type="text" id="controlNumber" name="controlNumber" placeholder="001 - Nomor Kontrol">
+
+    <label for="titleMARC">245 - Judul dan Pernyataan Tanggung Jawab:</label>
+    <input type="text" id="titleMARC" name="titleMARC" placeholder="Judul utama dan pengarang">
+
+    <label for="edition">250 - Edisi:</label>
+    <input type="text" id="edition" name="edition" placeholder="Contoh: Edisi ke-2">
+
+    <label for="imprint">260 - Penerbitan (Tempat, Penerbit, Tahun):</label>
+    <input type="text" id="imprint" name="imprint" placeholder="Jakarta : Gramedia, 2020">
+
+    <label for="description">300 - Deskripsi Fisik:</label>
+    <input type="text" id="description" name="description" placeholder="xii, 250 hlm ; 21 cm">
+
+    <label for="subjectMARC">650 - Subjek:</label>
+    <input type="text" id="subjectMARC" name="subjectMARC" placeholder="Perpustakaan -- Otomasi">
+
+    <label for="isbn">020 - ISBN:</label>
+    <input type="text" id="isbn" name="isbn" placeholder="978-602-1234-56-7">
+
+    <label for="callnum">090 - Nomor Panggil (Call Number):</label>
+    <input type="text" id="callnum" name="callnum" placeholder="025.3 AND f">
+
+    <h2> Metadata Dublin Core</h2>
+
+    <label for="dcTitle">Title (Judul):</label>
+    <input type="text" id="dcTitle" name="dcTitle" placeholder="Judul karya">
+
+    <label for="dcCreator">Creator (Pencipta):</label>
+    <input type="text" id="dcCreator" name="dcCreator" placeholder="Nama pengarang utama">
+
+    <label for="dcSubject">Subject (Topik/Subjek):</label>
+    <input type="text" id="dcSubject" name="dcSubject" placeholder="Subjek utama">
+
+    <label for="dcDescription">Description (Deskripsi):</label>
+    <textarea id="dcDescription" name="dcDescription" rows="3" cols="50" placeholder="Deskripsi singkat isi dokumen"></textarea>
+
+    <label for="dcPublisher">Publisher (Penerbit):</label>
+    <input type="text" id="dcPublisher" name="dcPublisher" placeholder="Nama penerbit">
+
+    <label for="dcDate">Date (Tahun Terbit):</label>
+    <input type="date" id="dcDate" name="dcDate">
+
+    <label for="dcType">Type (Jenis Dokumen):</label>
+    <select id="dcType" name="dcType">
+      <option value="text">Teks</option>
+      <option value="image">Gambar</option>
+      <option value="video">Video</option>
+      <option value="sound">Audio</option>
+      <option value="dataset">Dataset</option>
+    </select>
+
+    <label for="dcFormat">Format (Bentuk Fisik/Digital):</label>
+    <input type="text" id="dcFormat" name="dcFormat" placeholder="PDF, Buku Cetak, ePub">
+
+    <label for="dcIdentifier">Identifier (Nomor Identitas/ISBN):</label>
+    <input type="text" id="dcIdentifier" name="dcIdentifier" placeholder="ISBN atau URL">
+
+    <label for="dcLanguage">Language (Bahasa):</label>
+    <input type="text" id="dcLanguage" name="dcLanguage" placeholder="id, en, ar">
+
+    <label for="dcCoverage">Coverage (Cakupan Ruang/Waktu):</label>
+    <input type="text" id="dcCoverage" name="dcCoverage" placeholder="Indonesia, 2000–2020">
+
+    <label for="dcRights">Rights (Hak Cipta):</label><br>
+    <input type="text" id="dcRights" name="dcRights" placeholder="Hak cipta © 2025 oleh...">
+
+    <button type="submit">Simpan Metadata</button>
+    <button type="reset">Reset</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorial Instalasi PHP di Windows</title>
+</head>
+<body>
+  <h1>Tutorial Instalasi PHP di Windows</h1>
+    <p>Pada panduan ini, kita akan mempelajari cara menginstal PHP di sistem operasi Windows secara manual tanpa menggunakan XAMPP.</p>
+  <h2>Langkah 1: Unduh PHP</h2>
+    <p>Kunjungi situs resmi PHP:</p>
+    <p><a href="https://windows.php.net/download/" target="_blank">https://windows.php.net/download/</a></p>
+    <p>Pilih versi terbaru (misalnya PHP 8.3) dan unduh versi Thread Safe untuk sistem Anda (x64 atau x86).</p>
+  <h2>Langkah 2: Ekstrak File PHP</h2>
+    <p>Setelah diunduh, ekstrak file ZIP ke folder, misalnya:</p>
+        <pre><code>C:\php</code></pre>
+  <h2>Langkah 3: Tambahkan PHP ke PATH Environment Variable</h2>
+    <p>Buka System Properties → Advanced → Environment Variables, lalu tambahkan path berikut ke variabel Path:</p>
+        <pre><code>C:\php</code></pre>
+    <p>Kemudian klik OK untuk menyimpan perubahan.</p>
+
+  <h2>Langkah 4: Cek Instalasi PHP</h2>
+    <p>Buka Command Prompt dan ketik perintah berikut:</p>
+        <pre><code>php -v</code></pre>
+
+    <p>Jika instalasi berhasil, akan muncul output seperti ini:</p>
+        <pre><code>PHP 8.3.0 (cli) (built: Nov 21 2024 10:00:00) (ZTS Visual C++ 2019 x64)
+        Copyright (c) The PHP Group
+        Zend Engine v4.3.0, Copyright (c) Zend Technologies
+        </code></pre>
+
+  <h2>Langkah 5: Uji PHP di Browser</h2>
+    <p>Buat file baru bernama <code>info.php</code> di dalam folder <code>C:\xampp\htdocs</code> (atau folder web server Anda), lalu isi dengan kode berikut:</p>
+        <pre><code>&lt;?php
+    phpinfo();
+    ?&gt;</code></pre>
+
+    <p>Simpan file tersebut, lalu buka di browser dengan alamat:</p>
+        <pre><code>http://localhost/info.php</code></pre>
+
+  <p>Jika halaman udah nampilin informasi versi PHP, berarti installnya sudah sukses</p>
+</body>
+</html>
