@@ -1,0 +1,82 @@
+**Instalasi MariaDB di Linux Mint**: 
+
+1. Buka terminal. 
+2. Buka Fire Fox 
+3. Perbarui indeks paket. Ini akan memastikan Anda mendapatkan versi perangkat lunak terbaru. 'sudo apt update'
+4. Instal MariaDB Server. Gunakan perintah berikut untuk mengunduh dan memasang server MariaDB. 'sudo apt install   mariadb-server'
+5. Lakukan skrip keamanan, karena ini adalah langkah penting untuk mengamankan instalasi Anda. 'sudo mysql_secure_installation'
+6. cek keaktifan MariaDB dengan kode 'sudo systemctl status mariadb'
+
+
+**Instalasi MongoDB di Linux Mint**: 
+
+1. Buka terminal. 
+2. Buka Fire Fox 
+3. Instal MongoDB. 'sudo apt install mongodb-org'
+4. Jalankan layanan MongoDB. 'sudo systemctl start mongod'
+5. cek keaktifan MongoDB dengan kode 'sudo systemctl status mongod'
+
+
+**Cara Install Visual Studio Code di Linux Mint 22**
+
+1. Buka Terminal 
+2. Cari di Fire Fox cara install vscode 
+3. Impor Kunci GPG Microsoft: 'wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg'
+4. Instal Dependensi yang Diperlukan: 'sudo apt update
+sudo apt install apt-transport-https'
+5. Aktifkan Repositori VS Code: 'echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list' 
+6. Update dan Instal VS Code: 'sudo apt update sudo apt install code'
+7. Verifikasi Instalasi:  'code --version'
+
+
+**Cara Membuat Akun Github** 
+
+1. Buka Fire Fox 
+2. Cari Github Dashboard, kemudian klik  
+3. Masukkan E-mail dan Password 
+4. Sudah selesai
+
+
+**Cara Integrasikan VSCode ke Github**
+
+1. Login GitHub di VS Code
+
+2. Klik icon Source Control di sidebar kiri (yang gambarnya kayak cabang/branch).
+
+3. Klik tombol Sign in to GitHub (atau bisa lewat menu bawah kanan biasanya ada notifikasi “Sign in”).
+
+Browser akan terbuka → login ke GitHub → authorize VS Code.
+
+4. Konfigurasi Git (kalau belum)
+
+5. Atur username dan email biar commit-mu ada identitas: git config --global user.name "Nama Kamu"
+git config --global user.email "emailkamu@example.com"
+
+6. Buka folder project di VS Code
+Klik Open Folder… di menu Start (yang ada di screenshot).
+Pilih folder project kamu.
+
+7. Inisialisasi Git
+Kalau project baru: git init
+Kalau mau clone repo dari GitHub: git clone https://github.com/username/nama-repo.git
+8. Lalu buka folder hasil clone di VS Code.
+
+
+**Cara Membuat Repository Di Github Dan Cara Invite Akun Pak Al**
+
+1. Buka GitHub: login ke akun kita masing-masing.
+
+2. pilih New repository.
+isi form:
+Repository name → isi nama repo (contoh: tugas-nanas).
+Description (opsional).
+Pilih Public (bisa dilihat semua orang) 
+Centang Add a README file (biar ada file awal).
+Klik tombol Create repository.
+
+3. Invite Pak Al ke Repository
+Buka repo yang sudah kamu buat.
+Klik tab Settings (di bagian atas repo).
+Pilih Collaborators.
+Klik tombol Add people.
+Masukkan akun Pak Alke github

@@ -1,0 +1,162 @@
+# Pemanfaatan AI untuk Normalisasi Database (1NF, 2NF, 3NF)
+
+## Ringkasan
+Artikel ini menjelaskan bagaimana memanfaatkan **AI (Artificial Intelligence)** untuk membantu proses **normalisasi database** dari bentuk **1NF - 2NF - 3NF** (atau n1, n2, n3).  
+Dilengkapi dengan langkah-langkah **praktis, step-by-step**, contoh **kode Python & SQL**, serta **template prompt AI** untuk membantu otomatisasi analisis.
+
+---
+
+## Mengapa AI Diperlukan?
+Normalisasi database sering membutuhkan analisis relasi antar kolom, deteksi _functional dependency_, dan pembuatan tabel baru.  
+AI dapat membantu:
+- Menemukan kolom yang tidak atomik (melanggar 1NF)
+- Menemukan _partial dependencies_ antar kolom (untuk 2NF)
+- Menyarankan pemisahan tabel (untuk 3NF)
+- Menghasilkan draft SQL otomatis
+
+---
+
+## Prasyarat
+- Dataset (CSV atau tabel database)
+- Tools:
+  - **Python (pandas)**
+  - **SQL engine** (MySQL, PostgreSQL)
+  - **AI/LLM model** untuk rekomendasi skema
+- Backup data sebelum mulai
+
+---
+
+## Langkah-Langkah Normalisasi dengan AI
+
+### Step 0 — Backup dan Eksplorasi Awal
+1. Backup tabel asli.
+2. Lihat struktur kolom, tipe data, jumlah nilai unik, dan nilai kosong.
+
+```python
+import pandas as pd
+
+df = pd.read_csv("orders_denorm.csv")
+print(df.info())
+print(df.nunique())
+print(df.head())
+
+### Step 1 — Menuju 1NF (First Normal Form)
+for c in df.columns:
+    sample = df[c].dropna().astype(str).sample(min(5, len(df)))
+    print(c, sample.tolist())
+
+    df['Items_list'] = df['Items'].str.split(',')
+df['Qty_list'] = df['Qty'].astype(str).str.split(',')
+df['Price_list'] = df['Price'].astype(str).str.split(',')
+
+rows = []
+for _, row in df.iterrows():
+    for item, qty, price in zip(row['Items_list'], row['Qty_list'], row['Price_list']):
+        new_row = row.to_dict()
+        new_row.update({
+            'Item': item.strip(),
+            'Qty': int(qty),
+            'Price': float(price)
+        })
+        rows.append(new_row)
+
+df_1nf = pd.DataFrame(rows)
+
+### Step 2 — Menuju 2NF (Second Normal Form)
+key = ['order_id', 'product_id']
+
+for col in df_1nf.columns:
+    if col in key: continue
+    max_nunique_per_order = df_1nf.groupby('order_id')[col].nunique().max()
+    if max_nunique_per_order == 1:
+        print(f"{col} tergantung hanya pada order_id (partial dependency)")
+
+### Step 3 — Menuju 3NF (Third Normal Form) 
+df_1nf.groupby('customer_id')['region'].nunique().max()
+
+### Step 4 — Struktur Database Akhir (3NF) 
+CREATE TABLE customers (
+  customer_id SERIAL PRIMARY KEY,
+  name VARCHAR(200),
+  phone VARCHAR(50),
+  address TEXT
+);
+
+CREATE TABLE products (
+  product_id SERIAL PRIMARY KEY,
+  name VARCHAR(200)
+);
+
+CREATE TABLE orders (
+  order_id SERIAL PRIMARY KEY,
+  order_date DATE,
+  customer_id INTEGER REFERENCES customers(customer_id)
+);
+
+CREATE TABLE order_items (
+  order_item_id SERIAL PRIMARY KEY,
+  order_id INTEGER REFERENCES orders(order_id),
+  product_id INTEGER REFERENCES products(product_id),
+  qty INTEGER,
+  unit_price NUMERIC
+);
+
+### Step 5 — Migrasi Data Otomatis (SQL)
+-- Isi tabel customers
+INSERT INTO customers (name, phone, address)
+SELECT DISTINCT customer_name, customer_phone, customer_address
+FROM orders_denorm;
+
+-- Isi tabel orders
+INSERT INTO orders (order_date, customer_id)
+SELECT o.order_date, c.customer_id
+FROM orders_denorm o
+JOIN customers c ON c.name = o.customer_name;
+
+-- Isi tabel products
+INSERT INTO products (name)
+SELECT DISTINCT product_name FROM orders_denorm;
+
+-- Isi tabel order_items
+INSERT INTO order_items (order_id, product_id, qty, unit_price)
+SELECT o.order_id, p.product_id, oi.qty, oi.unit_price
+FROM orders o
+JOIN products p ON p.name = oi.product_name;
+
+### Step 6 — Validasi Hasil Migrasi
+-- Pastikan jumlah item sama
+SELECT COUNT(*) FROM order_items;
+
+-- Validasi total nilai
+SELECT SUM(qty * unit_price) FROM order_items;
+
+-- Validasi relasi
+SELECT COUNT(*) FROM order_items WHERE order_id NOT IN (SELECT order_id FROM orders);
+
+### Step 7 — Automasi dengan AI
+Saya punya tabel 'orders_denorm' dengan kolom:
+order_id, order_date, customer_name, customer_phone, items, qtys, prices, region.
+Contoh 5 baris:
+[masukkan contoh CSV]
+Tolong:
+1. Temukan pelanggaran 1NF, 2NF, dan 3NF
+2. Buat skema 3NF dengan DDL SQL
+3. Berikan contoh SQL migrasi dan langkah validasi
+
+### Petunjuk Penggunaan di VS Code:
+1. Buka VS Code.  
+2. Buat file baru bernama:  
+3. Paste seluruh isi di atas.  
+4. Aktifkan **Markdown Preview** dengan `Ctrl + Shift + V` untuk melihat tampilannya seperti artikel profesional.  
+5. (Opsional) Kamu bisa langsung ubah format menjadi `.py` jika ingin fokus ke kode-nya.
+
+### Kesimpulan 
+Pemanfaatan AI untuk normalisasi database dapat mempercepat proses analisis, mendeteksi pola dependensi tersembunyi, serta membantu pembuatan skema baru yang efisien dan konsisten. Dengan pendekatan semi-otomatis ini, beban manual berkurang — namun tetap memerlukan verifikasi logis dari manusia.
+
+
+Absensi: 
+![Normalisasi Database](/img/absensi_seminar.jpeg) 
+
+
+
+
