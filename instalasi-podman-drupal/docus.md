@@ -2,7 +2,7 @@
 
 # Bagian 1 — Install Podman di Debian
 
-### 1. Update sistem
+### 1. Update sistem.
 
 ```
 sudo apt update && sudo apt upgrade -y
