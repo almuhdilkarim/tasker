@@ -1,0 +1,131 @@
+# Cara Instalasi Eprints
+
+1. Update Sistem
+
+sudo apt update
+sudo apt upgrade -y
+
+# 2. Instalasi Apache Web Server
+
+sudo apt install apache2 -y
+sudo systemctl enable apache2
+sudo systemctl status apache2
+
+
+# 3. Instalasi Dependensi
+
+# 3.1 Build tools & library
+sudo apt install -y \
+wget curl build-essential git \
+libxml2-dev libgd-dev \
+libapache2-mod-perl2
+
+# 3.2 Perl & modul inti
+sudo apt install -y \
+perl libperl-dev cpanminus
+
+# 3.3 Dependensi modul Perl
+sudo apt install -y \
+libxml-libxml-perl \
+libxml-sax-perl \
+libxml-parser-perl \
+libterm-readkey-perl \
+libunicode-string-perl \
+libmime-lite-perl \
+libmime-types-perl \
+libdigest-sha-perl \
+libdbi-perl \
+libdbd-mysql-perl \
+libtext-unidecode-perl \
+libjson-perl \
+libdata-dumper-simple-perl \
+libsearch-xapian-perl \
+libio-string-perl \
+liblingua-stem-perl
+
+# 3.4 Modul Perl tambahan via CPAN
+sudo cpanm CGI
+sudo cpanm XML::LibXSLT || sudo apt install -y libxml-libxslt-perl
+sudo cpanm Archive::Zip
+sudo cpanm MIME::Base64
+
+# ===============================
+# Download & Instalasi EPrints
+# ===============================
+
+# 4.1 Masuk ke direktori /opt
+cd /opt || exit
+
+# 4.2 Download EPrints 3.4.5
+sudo wget https://github.com/eprints/eprints3.4/archive/refs/tags/v3.4.5.tar.gz
+
+# 4.3 Ekstrak file
+sudo tar -xzf v3.4.5.tar.gz
+
+# 4.4 Rename direktori
+sudo mv eprints3.4-3.4.5 eprints3
+
+# 4.5 Verifikasi
+ls -l | grep eprints3
+
+# 4.6 Masuk ke direktori EPrints
+cd eprints3 || exit
+
+echo "Instalasi dasar EPrints selesai"
+
+
+5. Buat User EPrints dan Set Permission
+5.1 Buat User Sistem EPrints
+sudo useradd -r -d /opt/eprints3 eprints
+5.2 Set Ownership Direktori
+sudo chown -R eprints:eprints /opt/eprints3
+5.3 Verifikasi Perubahan Ownership
+ls -l | grep eprints3
+Pastikan owner berubah dari root root menjadi eprints eprints
+5.4 Verifikasi Binary epadmin Ada
+ls -la /opt/eprints3/bin/ | grep epadmin
+
+Setup Password Root MariaDB/MySQL
+6.1 Masuk ke MySQL
+mysql
+6.2 Jalankan Perintah SQL Berikut
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'PasswordBaru123!';
+FLUSH PRIVILEGES;
+GRANT ALL PRIVILEGES ON . TO 'root'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+EXIT;
+6.3 Test Password
+mysql -u root -p
+Masukkan password yang baru dibuat, lalu exit.
+
+Buat Repository EPrints
+7.1 Ganti ke User EPrints
+sudo su - eprints
+7.2 Masuk ke Direktori EPrints
+cd /opt/eprints3
+7.3 Jalankan Wizard Pembuatan Repository
+#!/bin/bash
+
+# ===============================
+# 8. Konfigurasi Apache
+# ===============================
+
+# 8.1 Konfigurasi Nano Apache
+sudo nano /etc/apache2/apache2.conf
+Include /opt/eprints3/cfg/apache.conf
+ServerName localhost
+
+# 8.2 Generate Konfigurasi Apache
+sudo su - eprints
+cd /opt/eprints3
+./bin/generate_apacheconf Eprints1
+# ./bin/generate_apacheconf --replace Eprints1
+exit
+
+# 8.3 Aktifkan Apache
+sudo cp /opt/eprints3/cfg/apache/Eprints1.conf /etc/apache2/sites-available/eprints.conf
+sudo a2ensite eprints.conf
+sudo systemctl restart apache2
+sudo systemctl status apache2
+
+# 9 Testing Eprints

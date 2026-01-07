@@ -1,0 +1,229 @@
+# 💡 Pemanfaatan AI untuk Normalisasi Database ke Bentuk 1NF, 2NF, dan 3NF
+
+Normalisasi database adalah proses penting untuk menyusun data agar efisien dan bebas dari redundansi. Dalam dunia nyata, kita sering menemui data mentah yang tidak ternormalisasi. AI (seperti GPT-4) dapat dimanfaatkan untuk membantu menganalisis struktur data dan merekomendasikan bentuk normalisasi yang sesuai.
+
+# Tujuan
+
+- Mengubah data mentah menjadi struktur database yang ternormalisasi
+- Memanfaatkan AI (OpenAI GPT) untuk analisis dan saran normalisasi
+- Melakukan transformasi data menggunakan Python dan Pandas
+
+# Tools yang Dibutuhkan
+
+- Python 3.10+
+- Paket `pandas`
+- Paket `openai` (untuk GPT)
+- Editor: VS Code, Jupyter, atau lainnya
+
+Instalasi:
+bash pip install pandas openai
+
+## Step 1: Siapkan Data Mentah
+
+Buat file CSV bernama `data_mentah.csv`:
+
+csv
+id,nama,alamat,kota,produk_1,produk_2
+1,Budi,Jalan Mawar,Jakarta,Laptop,Mouse
+2,Sari,Jalan Melati,Bandung,Printer,Scanner
+
+## Step 2: Gunakan AI untuk Menganalisis Struktur
+
+Gunakan GPT untuk menganalisis data:
+
+python import openai
+
+openai.api_key = "YOUR_API_KEY"
+
+prompt = 
+Data berikut tidak ternormalisasi:
+id,nama,alamat,kota,produk_1,produk_2
+
+Bantu identifikasi:
+1. Entitas yang mungkin
+2. Kandidat untuk normalisasi ke 1NF
+3. Bentuk ideal setelah 1NF
+
+response = openai.ChatCompletion.create(
+    model="gpt-4",
+    messages=[{"role": "user", "content": prompt}]
+)
+
+print(response['choices'][0]['message']['content'])
+```
+
+##Step 3: Transformasi ke 1NF Menggunakan Pandas
+
+```python
+import pandas as pd
+
+# Baca data mentah
+df = pd.read_csv("data_mentah.csv")
+
+# Transformasi produk ke baris terpisah (long format)
+produk_long = pd.melt(
+    df,
+    id_vars=["id", "nama", "alamat", "kota"],
+    value_vars=["produk_1", "produk_2"],
+    var_name="produk_ke",
+    value_name="produk"
+)
+
+Hapus kolom tidak diperlukan
+produk_long = produk_long.drop(columns=["produk_ke"])
+
+Tabel pelanggan unik
+pelanggan = df[["id", "nama", "alamat", "kota"]].drop_duplicates()
+
+Tabel relasi pelanggan-produk
+produk_pelanggan = produk_long[["id", "produk"]]
+
+Simpan ke file jika diperlukan
+pelanggan.to_csv("pelanggan.csv", index=False)
+produk_pelanggan.to_csv("produk_pelanggan.csv", index=False)
+
+print(pelanggan)
+print(produk_pelanggan)
+```
+
+Hasil
+
+* Tabel `pelanggan` sudah tidak mengandung repeating groups
+* Tabel `produk_pelanggan` siap dipisah lebih lanjut
+
+## 🧩 Step 4: Normalisasi ke 2NF
+
+Syarat 2NF:
+ Sudah dalam 1NF
+ Setiap kolom non-kunci bergantung sepenuhnya pada primary key
+
+Analisis dengan AI:
+
+```python
+prompt = """
+Tabel produk_pelanggan:
+id (pelanggan), produk
+
+Apakah sudah dalam bentuk 2NF? Jika belum, bagaimana perbaikannya?
+"""
+
+ **AI Insight:**
+
+* Jika `produk` punya atribut seperti harga, kategori, dll, sebaiknya dibuat tabel `produk`
+* Maka, pisahkan `produk` menjadi entitas sendiri
+
+### Pisahkan Produk sebagai Entitas
+
+```python
+# Buat daftar unik produk
+produk_master = produk_pelanggan["produk"].drop_duplicates().reset_index(drop=True)
+produk_master = pd.DataFrame({
+    "id_produk": produk_master.index + 1,
+    "nama_produk": produk_master
+})
+
+# Gabungkan ke tabel relasi
+produk_pelanggan = produk_pelanggan.merge(
+    produk_master,
+    left_on="produk",
+    right_on="nama_produk"
+)[["id", "id_produk"]]
+
+# Simpan hasil
+produk_master.to_csv("produk.csv", index=False)
+produk_pelanggan.to_csv("relasi_pelanggan_produk.csv", index=False)
+
+print(produk_master)
+print(produk_pelanggan)
+```
+
+---
+
+## Step 5: Normalisasi ke 3NF
+
+Syarat 3NF:
+
+* Dalam 2NF
+* Tidak ada **transitive dependency**
+
+Contoh: Jika `kota` → `kode_pos`, maka `kota` perlu dipisah.
+
+### Gunakan AI untuk Cek Transitive Dependency
+
+```python
+prompt = """
+Dalam tabel pelanggan, terdapat kolom kota.
+Jika kota bisa memiliki atribut lain seperti kode pos, apakah perlu dibuat tabel terpisah?
+"""
+
+### 🧱 Pisahkan Tabel Kota
+
+```python
+# Contoh mapping kota ke kode pos
+kota_data = {
+    "Jakarta": "10110",
+    "Bandung": "40111"
+}
+
+# Buat tabel kota
+kota_df = pd.DataFrame([
+    {"id_kota": i+1, "nama_kota": k, "kode_pos": v}
+    for i, (k, v) in enumerate(kota_data.items())
+])
+
+# Gabungkan dengan tabel pelanggan
+pelanggan = pelanggan.merge(
+    kota_df,
+    left_on="kota",
+    right_on="nama_kota"
+)[["id", "nama", "alamat", "id_kota"]]
+
+# Simpan hasil
+kota_df.to_csv("kota.csv", index=False)
+pelanggan.to_csv("pelanggan_final.csv", index=False)
+
+print(kota_df)
+print(pelanggan)
+```
+
+---
+
+## 📊 Final Struktur Database (3NF)
+
+* **pelanggan_final**
+
+  * id, nama, alamat, id_kota
+
+* **kota**
+
+  * id_kota, nama_kota, kode_pos
+
+* **produk**
+
+  * id_produk, nama_produk
+
+* **relasi_pelanggan_produk**
+
+  * id (pelanggan), id_produk
+
+---
+
+##  Kesimpulan
+
+Dengan bantuan AI seperti GPT-4, kita dapat:
+
+* Mengidentifikasi entitas dan atribut
+* Mengenali repeating groups (1NF)
+* Memisahkan entitas dan membuat relasi (2NF)
+* Menghapus ketergantungan transitif (3NF)
+
+AI bukan hanya untuk otomatisasi, tapi juga sebagai **partner berpikir** dalam desain skema database.
+
+## Absensi 
+
+
+## Referensi
+
+* [OpenAI API Documentation](https://platform.openai.com/docs)
+* [Pandas Melt](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.melt.html)
+* [Normalization (Wikipedia)](https://en.wikipedia.org/wiki/Database_normalization)
